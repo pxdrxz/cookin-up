@@ -43,7 +43,7 @@
 }
 
 .foto-banner {
-  width: 35rem;
+  width: 36rem;
 }
 
 @media only screen and (max-width: 1300px) {
