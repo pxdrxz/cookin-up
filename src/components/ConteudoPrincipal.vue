@@ -1,29 +1,34 @@
 <script lang="ts">
 export default {
-    data() {
-        return {
-            ingredientes: ['Alho','Manteiga','Orégano']
-        }
+  data() {
+    return {
+      ingredientes: ['Alho', 'Manteiga', 'Orégano']
     }
+  }
 }
 </script>
 
 <template>
 
-    <main class="conteudo-principal">
-        <section>
-            <span class="subtitulo-lg sua-lista-texto">
-                Sua Lista:
-            </span>
+  <main class="conteudo-principal">
+    <section>
+      <span class="subtitulo-lg sua-lista-texto">
+        Sua Lista:
+      </span>
 
-            <ul class="ingredientes-sua-lista">
-                <li v-for="ingrediente in ingredientes" 
-                class="ingrediente">
-                    {{ ingrediente }}
-                </li>
-            </ul>
-        </section>
-    </main>
+      <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
+        <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">
+          {{ ingrediente }}
+        </li>
+      </ul>
+
+      <p v-else class="paragrafo lista-vazia">
+        <img src="../assets/imagens/icones/lista-vazia.svg" alt="icone de pesquisa">
+        Sua lista está vazia, selecione ingredientes para continuar
+      </p>
+
+    </section>
+  </main>
 </template>
 
 <style scoped>
@@ -59,8 +64,8 @@ export default {
   min-width: 4.25rem;
   padding: 0.5rem;
   text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
+  transition: 0.2s;
+  color: var(--creme, #FFFAF3);
   background: var(--coral, #F0633C);
   font-weight: 700;
 }
@@ -89,5 +94,4 @@ export default {
     gap: 4rem;
   }
 }
-
 </style>
