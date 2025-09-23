@@ -1,41 +1,42 @@
 <script lang="ts">
 import { obterCategorias } from '@/http/index';
 import type ICategoria from '@/interfaces/iCategoria';
+import CardCategoria from './CardCategoria.vue';
 
 export default {
-    data() {
-        return {
-            categorias: [] as ICategoria[],  //conteudo obterCategorias esta dentro da pasta index.ts no src
-        }
-    },
-    async created() {
-      this.categorias = await obterCategorias();
+  data() {
+    return {
+      categorias: [] as ICategoria[],  //conteudo obterCategorias esta dentro da pasta index.ts no src
     }
+  },
+  async created() {
+    this.categorias = await obterCategorias();
+  },
+  components: { CardCategoria } //todos os componentes utilizados devem ser referenciados dentro do "components: { componente }" para ser importado e funcionar do jeito correto
 }
 </script>
 
 <template>
-    
-    <section class="selecionar-ingredientes">
-        <h1 class="cabecalho titulo-ingredientes">Ingredientes</h1>
-        <p class="paragrafo-lg instrucoes">
-            Selecione abaixo os ingredientes que você quer utilizar nessa receita
-        </p>
-        <ul class="categorias">
-            <li v-for="categoria in categorias" :key="categoria.nome">
-                {{ categoria.nome }}
-            </li>
-        </ul>
-        
-        <p class="paragrafo dica">
-            *Atenção: consideramos que você tem em casa sal, pimenta e água.
-        </p>
-    </section>
+
+  <section class="selecionar-ingredientes">
+    <h1 class="cabecalho titulo-ingredientes">Ingredientes</h1>
+    <p class="paragrafo-lg instrucoes">
+      Selecione abaixo os ingredientes que você quer utilizar nessa receita
+    </p>
+    <ul class="categorias">
+      <li v-for="categoria in categorias" :key="categoria.nome">
+        <CardCategoria :categoria="categoria" /> 
+      </li>
+    </ul>
+
+    <p class="paragrafo dica">
+      *Atenção: consideramos que você tem em casa sal, pimenta e água.
+    </p>
+  </section>
 
 </template>
 
 <style scoped>
-
 .selecionar-ingredientes {
   display: flex;
   flex-direction: column;
@@ -70,5 +71,4 @@ export default {
     margin-bottom: 2.5rem;
   }
 }
-
 </style>
