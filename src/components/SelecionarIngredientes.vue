@@ -23,9 +23,10 @@ export default {
     <p class="paragrafo-lg instrucoes">
       Selecione abaixo os ingredientes que você quer utilizar nessa receita
     </p>
+    
     <ul class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        <CardCategoria :categoria="categoria" /> 
+        <CardCategoria :categoria="categoria" />
       </li>
     </ul>
 
