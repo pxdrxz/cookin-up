@@ -23,7 +23,7 @@ export default {
         </ul>
 
         <p v-else class="paragrafo lista-vazia">
-            <img src="../assets/imagens/icones/lista-vazia.svg" alt="ícone de pesquisa">
+            <img src="../assets/lista-vazia.svg" alt="ícone de pesquisa">
 
         </p>
     </section>
