@@ -14,7 +14,7 @@ export default {
     this.categorias = await obterCategorias();
   },
   components: { CardCategoria, BotaoPrincipal }, //todos os componentes utilizados devem ser referenciados dentro do "components: { componente }" para ser importado e funcionar do jeito correto
-  emits: ['adicionarIngrediente', 'removerIngrediente', 'Rodape']
+  emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']
 }
   
 </script>
@@ -40,7 +40,7 @@ export default {
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
   
-    <BotaoPrincipal texto="Buscar Receitas!" />
+    <BotaoPrincipal texto="Buscar Receitas!" @click="$emit('buscarReceitas')"/>
   </section>
 
 </template>
