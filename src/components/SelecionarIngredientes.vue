@@ -5,6 +5,7 @@ import CardCategoria from './CardCategoria.vue';
 import BotaoPrincipal from './BotaoPrincipal.vue';
 
 export default {
+  name: "SelecionarIngrediente",
   data() {
     return {
       categorias: [] as ICategoria[],  //conteudo obterCategorias esta dentro da pasta index.ts no src

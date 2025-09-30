@@ -9,7 +9,7 @@ type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas';
 export default {
   data() {
     return {
-      ingredientes: [] as string[], 
+      ingredientes: [] as string[],
       conteudo: 'SelecionarIngredientes' as Pagina
     };
   },
@@ -25,7 +25,7 @@ export default {
       this.conteudo = pagina;
     }
   },
-  emits: ['adicionarIngrediente','removerIngrediente']
+  emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
@@ -33,15 +33,16 @@ export default {
 
   <main class="conteudo-principal">
 
-    <SuaLista :ingredientes/>
+    <SuaLista :ingredientes />
 
-    <Selecionaringredientes v-if="conteudo === 'SelecionarIngredientes'"
-    @adicionar-ingrediente="adicionarIngrediente"
-    @remover-ingrediente="removerIngrediente"
-    @buscar-receitas="navegar('MostrarReceitas')"
-    />
+    <KeepAlive include="">
+      <Selecionaringredientes v-if="conteudo === 'SelecionarIngredientes'" @adicionar-ingrediente="adicionarIngrediente"
+        @remover-ingrediente="removerIngrediente" @buscar-receitas="navegar('MostrarReceitas')" />
 
-    <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'" />
+      <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'"
+      :ingredientes="ingredientes"
+        @editar-receitas="navegar('SelecionarIngredientes')" />
+    </KeepAlive>
 
   </main>
 </template>
